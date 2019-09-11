@@ -53,8 +53,8 @@ const formatGeoJson = rows => {
   let arcs = {};
 
   Object.entries(data).forEach( ([clm, pl]) => {
-    let from;
-    let to;
+    let from,
+        to;
 
     if (pl.production && pl.storage && pl.discovery  &&  pl.storage !== pl.discovery) {
       from  = pl.storage;
