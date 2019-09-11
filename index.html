@@ -24,13 +24,32 @@
       right: 0;
       left: 0;
     }
+    #loading{
+      text-align: center;
+      margin: 0 auto;
+      position: fixed; /* or absolute */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: #999;
+      font-family: sans-serif;
+    }
+    #loading>img{
+      vertical-align: middle;
+    }
   </style>
 
 </head>
 
 <body>
 
-  <div id="map">Loading data from remote server....</div>
+  <div id="map">
+    <div id="loading">
+      <img class="alignnone" src="https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif" alt="" width="48" height="48">
+      Loading data from remote server&hellip;
+    </div>
+  </div>
 
   <!-- first load LeafletJS -->
   <script src="https://unpkg.com/leaflet@1.3/dist/leaflet.js"></script>
@@ -44,12 +63,13 @@
   <!-- then load CanvasFlowMapLayer -->
   <script src="https://jwasilgeo.github.io/Leaflet.Canvas-Flowmap-Layer/src/CanvasFlowmapLayer.js"></script>
 
-  <script src="formatGeoJson.js" charset="utf-8"></script>
+  <script src="./formatGeoJson.js" charset="utf-8"></script>
 
 
   <script>
 
     const composeMap = (geoJsonFeatureCollection, places) => {
+      document.getElementById('map').innerHTML = '';
 
       const bounds = [
         [
@@ -111,10 +131,6 @@
       });
     };
 
-
-
-
-    // composeMap([], []);
 
     const apiUrl = "http://db.localhost/api/paths/m_msplaces?verb=search&type=encoded&join=+JOIN+paths__geodata+as+g+ON+g.id_link+%3D+place&fields[paths__m_msplaces.id_link]=id_link&fields[paths__m_msplaces.type]=Type&fields[paths__m_msplaces.place]=Place&fields[g.geometry]=geometry&limit_start=0&limit_end=500&q_encoded=IHBhdGhzX19tX21zcGxhY2VzLmlkX2xpbmsgSU4gKCBTRUxFQ1QgaWRfbGluayBGUk9NICBgcGF0aHNfX21fbXNwbGFjZXNgIEdST1VQIEJZIChpZF9saW5rKSBIQVZJTkcgQ09VTlQoRElTVElOQ1QgYHBsYWNlYCkgPiAxICkg";
 

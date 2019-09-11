@@ -118,8 +118,5 @@ const formatGeoJson = rows => {
     }
   }
 
-
-
-
    return [geoJson, startPlaces];
 };
