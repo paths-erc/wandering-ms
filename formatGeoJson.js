@@ -1,5 +1,24 @@
 /* jshint esversion: 6 */
 
+/**
+ * Compacts array o
+ * {
+ *   "name": "Medinet Madi",
+ *   "id_link": "173",
+ *   "type": "discovery",
+ *   "place": "104",
+ *   "geometry": "POINT(30.641461 29.191783)"
+ *   }
+ *
+ * In array of
+ * 1:{
+ *   production: "110"
+ *   storage: "144"
+ * }
+ *
+ * @param  {Array} rows [description]
+ * @return {Array}      [description]
+ */
 const compact = rows => {
   let data = {};
   let places = {};
@@ -9,6 +28,7 @@ const compact = rows => {
     const type = e.type;
     const place = e.place;
     const wkt = e.geometry;
+    const name = e.name;
 
     if (typeof data[ms] == 'undefined'){
       data[ms] = {};
@@ -17,38 +37,13 @@ const compact = rows => {
       data[ms][type] = place;
     }
     places[place] = wkt2arr(wkt);
+    places[place].push(name);
   });
 
   return [data, places];
 };
 
-const wkt2arr = wkt =>{
-  return wkt.replace(/POINT\s?\(/, '').replace(/\s?\)/, '').split(' ');
-};
-
-const addArc = (from, to, arcs, places) => {
-  if ( !from || !to ){
-    return arcs;
-  }
-  const key = `${from}-${to}`;
-
-  if (arcs[key]){
-    arcs[key].tot += 1;
-  } else {
-    arcs[key] = {
-      from: from,
-      to: to,
-      from_lat: parseFloat(places[from][1]),
-      from_lon: parseFloat(places[from][0]),
-      to_lat:   parseFloat(places[to][1]),
-      to_lon:   parseFloat(places[to][0]),
-      tot: 1
-    };
-  }
-  return arcs;
-};
-
-const formatGeoJson = rows => {
+const buildArcs = (rows) => {
   const [data, places] = compact(rows);
   let arcs = {};
 
@@ -80,6 +75,46 @@ const formatGeoJson = rows => {
     arcs = addArc(from, to, arcs, places);
   } );
 
+  return arcs;
+};
+
+/**
+ * Converts WKT of type POINT to array of lng,lat
+ * @param  {String} wkt [description]
+ * @return {Array}     [description]
+ */
+const wkt2arr = wkt =>{
+  return wkt.replace(/POINT\s?\(/, '').replace(/\s?\)/, '').split(' ').map(e => parseFloat(e));
+};
+
+const addArc = (from, to, arcs, places) => {
+  if ( !from || !to ){
+    return arcs;
+  }
+  const key = `${from}-${to}`;
+
+  if (arcs[key]){
+    arcs[key].tot += 1;
+  } else {
+    arcs[key] = {
+      from: from,
+      to: to,
+      from_lat: places[from][1],
+      from_lon: places[from][0],
+      to_lat:   places[to][1],
+      to_lon:   places[to][0],
+      tot: 1,
+      from_name: places[from][2],
+      to_name: places[to][2]
+    };
+  }
+  return arcs;
+};
+
+const formatGeoJson = (rows) => {
+
+  const arcs = buildArcs(rows);
+
   let geoJson = {
     "type":"FeatureCollection",
     "features":[]
@@ -107,7 +142,9 @@ const formatGeoJson = rows => {
           "e_City":a.to,
           "e_lat":a.to_lat,
           "e_lon":a.to_lon,
-          "tot":a.tot
+          "tot":a.tot,
+          "from_name": `${a.from}: ${a.from_name}`,
+          "to_name": `${a.to}: ${a.to_name}`
        }
     };
 

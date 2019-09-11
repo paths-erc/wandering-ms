@@ -1,8 +1,8 @@
 {
     "head": {
         "query_where": "paths__m_msplaces.id_link IN ( SELECT id_link FROM `paths__m_msplaces` GROUP BY (id_link) HAVING COUNT(DISTINCT `place`) > 1 )",
-        "query_arrived": "SELECT paths__m_msplaces.id_link, paths__m_msplaces.type, paths__m_msplaces.place, g.geometry FROM `paths__m_msplaces`  JOIN paths__geodata as g ON g.id_link = place WHERE paths__m_msplaces.id_link IN ( SELECT id_link FROM `paths__m_msplaces` GROUP BY (id_link) HAVING COUNT(DISTINCT `place`) > 1 ) ORDER BY `paths__m_msplaces`.`id` asc  LIMIT 0 , 500 ",
-        "query_encoded": "U0VMRUNUIHBhdGhzX19tX21zcGxhY2VzLmlkX2xpbmssIHBhdGhzX19tX21zcGxhY2VzLnR5cGUsIHBhdGhzX19tX21zcGxhY2VzLnBsYWNlLCBnLmdlb21ldHJ5IEZST00gYHBhdGhzX19tX21zcGxhY2VzYCAgSk9JTiBwYXRoc19fZ2VvZGF0YSBhcyBnIE9OIGcuaWRfbGluayA9IHBsYWNlIFdIRVJFIHBhdGhzX19tX21zcGxhY2VzLmlkX2xpbmsgSU4gKCBTRUxFQ1QgaWRfbGluayBGUk9NIGBwYXRoc19fbV9tc3BsYWNlc2AgR1JPVVAgQlkgKGlkX2xpbmspIEhBVklORyBDT1VOVChESVNUSU5DVCBgcGxhY2VgKSA+IDEgKSBPUkRFUiBCWSBgcGF0aHNfX21fbXNwbGFjZXNgLmBpZGAgYXNjICBMSU1JVCAwICwgNTAwIA==",
+        "query_arrived": "SELECT p.name, paths__m_msplaces.id_link, paths__m_msplaces.type, paths__m_msplaces.place, g.geometry FROM `paths__m_msplaces` JOIN paths__geodata as g ON g.id_link=place JOIN paths__places as p ON p.id=paths__m_msplaces.place WHERE paths__m_msplaces.id_link IN ( SELECT id_link FROM `paths__m_msplaces` GROUP BY (id_link) HAVING COUNT(DISTINCT `place`) > 1 ) ORDER BY `paths__m_msplaces`.`id` asc  LIMIT 0 , 500 ",
+        "query_encoded": "U0VMRUNUIHAubmFtZSwgcGF0aHNfX21fbXNwbGFjZXMuaWRfbGluaywgcGF0aHNfX21fbXNwbGFjZXMudHlwZSwgcGF0aHNfX21fbXNwbGFjZXMucGxhY2UsIGcuZ2VvbWV0cnkgRlJPTSBgcGF0aHNfX21fbXNwbGFjZXNgIEpPSU4gcGF0aHNfX2dlb2RhdGEgYXMgZyBPTiBnLmlkX2xpbms9cGxhY2UgSk9JTiBwYXRoc19fcGxhY2VzIGFzIHAgT04gcC5pZD1wYXRoc19fbV9tc3BsYWNlcy5wbGFjZSBXSEVSRSBwYXRoc19fbV9tc3BsYWNlcy5pZF9saW5rIElOICggU0VMRUNUIGlkX2xpbmsgRlJPTSBgcGF0aHNfX21fbXNwbGFjZXNgIEdST1VQIEJZIChpZF9saW5rKSBIQVZJTkcgQ09VTlQoRElTVElOQ1QgYHBsYWNlYCkgPiAxICkgT1JERVIgQlkgYHBhdGhzX19tX21zcGxhY2VzYC5gaWRgIGFzYyAgTElNSVQgMCAsIDUwMCA=",
         "total_rows": 180,
         "page": 1,
         "total_pages": 6,
@@ -10,8 +10,9 @@
         "stripped_table": "m_msplaces",
         "table_label": "Relevant places",
         "no_records_shown": 180,
-        "query_executed": "SELECT paths__m_msplaces.id_link, paths__m_msplaces.type, paths__m_msplaces.place, g.geometry FROM `paths__m_msplaces`  JOIN paths__geodata as g ON g.id_link = place WHERE paths__m_msplaces.id_link IN ( SELECT id_link FROM `paths__m_msplaces` GROUP BY (id_link) HAVING COUNT(DISTINCT `place`) > 1 ) ORDER BY `paths__m_msplaces`.`id` asc  LIMIT 0 , 500 ",
+        "query_executed": "SELECT p.name, paths__m_msplaces.id_link, paths__m_msplaces.type, paths__m_msplaces.place, g.geometry FROM `paths__m_msplaces` JOIN paths__geodata as g ON g.id_link=place JOIN paths__places as p ON p.id=paths__m_msplaces.place WHERE paths__m_msplaces.id_link IN ( SELECT id_link FROM `paths__m_msplaces` GROUP BY (id_link) HAVING COUNT(DISTINCT `place`) > 1 ) ORDER BY `paths__m_msplaces`.`id` asc  LIMIT 0 , 500 ",
         "fields": {
+            "p.name": "toponym",
             "paths__m_msplaces.id_link": "id_link",
             "paths__m_msplaces.type": "Type",
             "paths__m_msplaces.place": "Place",
@@ -20,1080 +21,1260 @@
     },
     "records": [
         {
+            "name": "Touton",
             "id_link": "233",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "204",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "216",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "173",
             "type": "discovery",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "174",
             "type": "discovery",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "175",
             "type": "discovery",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Dishna",
             "id_link": "42",
             "type": "storage",
             "place": "102",
             "geometry": "POINT(32.41559028625489 26.17176967696689)"
         },
         {
+            "name": "Alexandria",
             "id_link": "42",
             "type": "production",
             "place": "38",
             "geometry": "POINT(29.9079146667 31.1982456667)"
         },
         {
+            "name": "Lykopolites nomòs",
             "id_link": "175",
             "type": "production",
             "place": "225",
             "geometry": "POINT(30.75 27.25)"
         },
         {
+            "name": "Lykopolites nomòs",
             "id_link": "173",
             "type": "production",
             "place": "225",
             "geometry": "POINT(30.75 27.25)"
         },
         {
+            "name": "Lykopolites nomòs",
             "id_link": "174",
             "type": "production",
             "place": "225",
             "geometry": "POINT(30.75 27.25)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "4305",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "4305",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "4318",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "4318",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "538",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "538",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "220",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Giza",
             "id_link": "67",
             "type": "discovery",
             "place": "274",
             "geometry": "POINT(31.1436592126 29.9660697534)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "67",
             "type": "storage",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "323",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "323",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "323",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "360",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "360",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "360",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Panopolis",
             "id_link": "284",
             "type": "discovery",
             "place": "24",
             "geometry": "POINT(31.7451755 26.5648875)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "314",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "314",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "586",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "586",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "586",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "219",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "64",
             "type": "storage",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Giza",
             "id_link": "64",
             "type": "discovery",
             "place": "274",
             "geometry": "POINT(31.1436592126 29.9660697534)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "67",
             "type": "production",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "65",
             "type": "storage",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Giza",
             "id_link": "65",
             "type": "discovery",
             "place": "274",
             "geometry": "POINT(31.1436592126 29.9660697534)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "64",
             "type": "production",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "65",
             "type": "production",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Giza",
             "id_link": "66",
             "type": "discovery",
             "place": "274",
             "geometry": "POINT(31.1436592126 29.9660697534)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "66",
             "type": "storage",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "66",
             "type": "production",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Deir Anba Hadra \/ St. Simeon",
             "id_link": "1128",
             "type": "discovery",
             "place": "72",
             "geometry": "POINT (32.8764433 24.0946215)"
         },
         {
+            "name": "Wadi Natrun",
             "id_link": "1128",
             "type": "production",
             "place": "110",
             "geometry": "POINT(30.476111 30.291389)"
         },
         {
+            "name": "Touton",
             "id_link": "511",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "511",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "511",
             "type": "production",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "314",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "216",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "219",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "1540",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1540",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1540",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "480",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "231",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "223",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "223",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "226",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "227",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Gebel el-Qalamun",
             "id_link": "229",
             "type": "production",
             "place": "100",
             "geometry": "POINT(30.506483 28.910537)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "229",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "232",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Panopolis",
             "id_link": "1006",
             "type": "discovery",
             "place": "24",
             "geometry": "POINT(31.7451755 26.5648875)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1006",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Panopolis",
             "id_link": "1003",
             "type": "discovery",
             "place": "24",
             "geometry": "POINT(31.7451755 26.5648875)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1003",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Panopolis",
             "id_link": "1004",
             "type": "discovery",
             "place": "24",
             "geometry": "POINT(31.7451755 26.5648875)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1004",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Panopolis",
             "id_link": "1005",
             "type": "discovery",
             "place": "24",
             "geometry": "POINT(31.7451755 26.5648875)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1005",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Panopolis",
             "id_link": "1007",
             "type": "discovery",
             "place": "24",
             "geometry": "POINT(31.7451755 26.5648875)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1007",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "410",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "410",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Dishna",
             "id_link": "6295",
             "type": "storage",
             "place": "102",
             "geometry": "POINT(32.41559028625489 26.17176967696689)"
         },
         {
+            "name": "Dishna",
             "id_link": "44",
             "type": "storage",
             "place": "102",
             "geometry": "POINT(32.41559028625489 26.17176967696689)"
         },
         {
+            "name": "Dishna",
             "id_link": "6296",
             "type": "storage",
             "place": "102",
             "geometry": "POINT(32.41559028625489 26.17176967696689)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "235",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "234",
             "type": "storage",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "234",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "236",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "204",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "216",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "219",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "220",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "223",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "226",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "227",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "229",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "233",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "239",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "239",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "239",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Magdola",
             "id_link": "4052",
             "type": "storage",
             "place": "327",
             "geometry": "POINT (30.588404 29.132354)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "4052",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "240",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "242",
             "type": "storage",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "242",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Oxyrhynchites nomòs",
             "id_link": "44",
             "type": "production",
             "place": "243",
             "geometry": "POINT (30.75 28.25)"
         },
         {
+            "name": "Oxyrhynchites nomòs",
             "id_link": "6296",
             "type": "production",
             "place": "243",
             "geometry": "POINT (30.75 28.25)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "244",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "244",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "68",
             "type": "storage",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Wadi Natrun Monastery of St. Macarius",
             "id_link": "87",
             "type": "storage",
             "place": "208",
             "geometry": "POINT(30.475859642028812 30.291607843703723)"
         },
         {
+            "name": "Wadi Natrun Monastery of St. Macarius",
             "id_link": "87",
             "type": "discovery",
             "place": "208",
             "geometry": "POINT(30.475859642028812 30.291607843703723)"
         },
         {
+            "name": "Touton",
             "id_link": "244",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Wadi Natrun Monastery of St. Macarius",
             "id_link": "123",
             "type": "discovery",
             "place": "208",
             "geometry": "POINT(30.475859642028812 30.291607843703723)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "247",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "248",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "249",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "251",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "250",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "252",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "253",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "254",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "207",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "209",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "210",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "212",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "213",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "247",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "247",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "232",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Touton",
             "id_link": "240",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Wadi Natrun Monastery of the Syrians",
             "id_link": "19",
             "type": "discovery",
             "place": "206",
             "geometry": "POINT(30.3600404 30.3190634)"
         },
         {
+            "name": "Wadi Natrun Monastery of John the Little ",
             "id_link": "19",
             "type": "storage",
             "place": "204",
             "geometry": "POINT(30.379225 30.300424)"
         },
         {
+            "name": "Luxor complex",
             "id_link": "30",
             "type": "discovery",
             "place": "19",
             "geometry": "POINT(32.639831006526954 25.700386836574737)"
         },
         {
+            "name": "Western Thebes",
             "id_link": "30",
             "type": "discovery",
             "place": "191",
             "geometry": "POINT(32.61875152587891 25.726921100398066)"
         },
         {
+            "name": "Tell Edfu",
             "id_link": "182",
             "type": "discovery",
             "place": "179",
             "geometry": "POINT(32.8732936296 24.9795361111)"
         },
         {
+            "name": "Hagr Edfu",
             "id_link": "182",
             "type": "storage",
             "place": "95",
             "geometry": "POINT(32.83985137939454 24.97423218002226)"
         },
         {
+            "name": "Touton",
             "id_link": "248",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "248",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "249",
             "type": "storage",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Touton",
             "id_link": "250",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Gebel el-Qalamun",
             "id_link": "251",
             "type": "production",
             "place": "100",
             "geometry": "POINT(30.506483 28.910537)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "251",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "231",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "252",
             "type": "storage",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Touton",
             "id_link": "253",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "253",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "213",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "213",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Touton",
             "id_link": "254",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "254",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Wadi Natrun Monastery of the Syrians",
             "id_link": "2720",
             "type": "discovery",
             "place": "206",
             "geometry": "POINT(30.3600404 30.3190634)"
         },
         {
+            "name": "Touton",
             "id_link": "2720",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Touton",
             "id_link": "16",
             "type": "discovery",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "480",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "480",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "391",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "391",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "391",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "602",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "602",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "602",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "524",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "524",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "570",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "570",
             "type": "discovery",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "583",
             "type": "production",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "1417",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "6350",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Touton",
             "id_link": "207",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "207",
             "type": "storage",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "209",
             "type": "storage",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Medinet Madi",
             "id_link": "210",
             "type": "storage",
             "place": "104",
             "geometry": "POINT(30.641461 29.191783)"
         },
         {
+            "name": "Monastery of Shenoute at Atripe",
             "id_link": "284",
             "type": "storage",
             "place": "112",
             "geometry": "POINT(31.644315719604496 26.534057544367265)"
         },
         {
+            "name": "Wadi Natrun",
             "id_link": "1",
             "type": "production",
             "place": "110",
             "geometry": "POINT(30.476111 30.291389)"
         },
         {
+            "name": "Babylon",
             "id_link": "1",
             "type": "storage",
             "place": "144",
             "geometry": "POINT(31.2301075 30.005783)"
         },
         {
+            "name": "Hamuli\/Monastery of the Archangel Michael at Phantoou",
             "id_link": "1450",
             "type": "discovery",
             "place": "99",
             "geometry": "POINT(30.598744 29.270347)"
         },
         {
+            "name": "Theadelphia",
             "id_link": "1450",
             "type": "storage",
             "place": "121",
             "geometry": "POINT(30.562937 29.346942)"
         },
         {
+            "name": "Monastery of Apa Jeremiah",
             "id_link": "68",
             "type": "production",
             "place": "75",
             "geometry": "POINT(31.219298243522648 29.866160918578828)"
         },
         {
+            "name": "Giza",
             "id_link": "68",
             "type": "discovery",
             "place": "274",
             "geometry": "POINT(31.1436592126 29.9660697534)"
         },
         {
+            "name": "Touton",
             "id_link": "4318",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Touton",
             "id_link": "524",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Touton",
             "id_link": "570",
             "type": "production",
             "place": "101",
             "geometry": "POINT(30.762808 29.107063)"
         },
         {
+            "name": "Hermopolis Magna",
             "id_link": "4722",
             "type": "production",
             "place": "28",
             "geometry": "POINT(30.8035806072 27.7796202493)"
         },
         {
+            "name": "Wadi Natrun",
             "id_link": "123",
             "type": "production",
             "place": "110",
             "geometry": "POINT(30.476111 30.291389)"
         },
         {
+            "name": "Touton",
             "id_link": "4305",
             "type": "production",
             "place": "101",

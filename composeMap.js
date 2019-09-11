@@ -87,6 +87,15 @@ const composeMap = (geoJsonFeatureCollection, places) => {
 
 
   }).addTo(map);
+
+  oneToManyFlowmapLayer.bindTooltip(function (layer) {
+    if (layer.feature.properties.isOrigin){
+      return layer.feature.properties.from_name;
+    } else {
+      return layer.feature.properties.to_name;
+    }
+  });
+
   oneToManyFlowmapLayer.getAnimationEasingOptions();
 
   oneToManyFlowmapLayer.on('click', function(e) {

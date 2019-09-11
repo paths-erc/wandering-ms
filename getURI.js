@@ -8,9 +8,11 @@ const getURI = (debug) => {
 
   const base = "https://db-dev.bradypus.net/api/paths/m_msplaces?verb=search&type=encoded";
   const join = [
-    "JOIN paths__geodata as g ON g.id_link=place"
+    "JOIN paths__geodata as g ON g.id_link=place",
+    "JOIN paths__places as p ON p.id=paths__m_msplaces.place"
   ];
   const fields = [
+    'fields[p.name]=toponym',
     'fields[paths__m_msplaces.id_link]=id_link',
     'fields[paths__m_msplaces.type]=Type',
     'fields[paths__m_msplaces.place]=Place',
